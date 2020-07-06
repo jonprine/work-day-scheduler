@@ -59,6 +59,12 @@ for (var i = 0; i < workHours.length; i++) {
 };
 //console.log(currentTime[0]);
 
+//console.log(saveButton);
+
+
+function renderToDos(list) {
+    $(".description").empty();
+}
 
 $("document").ready(function () {
 
@@ -67,6 +73,26 @@ $("document").ready(function () {
     $("#currentDay").text(currentDate);
 
 
-
-
 })
+
+var list = JSON.parse(localStorage.getItem("list"));
+
+
+// create a function to save info in textarea
+// when clicked on save button
+$("#saveBtn").on("click", function(event) {
+    event.preventDefault();
+
+    // get value from description in timeslot
+    var toDoHour = $(".description")
+        .val();
+  
+    list.push(toDoHour);
+
+    renderToDos(list);
+
+    localStorage.setItem(".description", JSON.stringify(list));
+
+    $(".description").val("");
+
+});
