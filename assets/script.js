@@ -61,10 +61,7 @@ for (var i = 0; i < workHours.length; i++) {
 
 //console.log(saveButton);
 
-
-function renderToDos(list) {
-    $(".description").empty();
-}
+//
 
 $("document").ready(function () {
 
@@ -75,24 +72,48 @@ $("document").ready(function () {
 
 })
 
-var list = JSON.parse(localStorage.getItem("list"));
+// create variable to hold input from text area
+// not working
+//var list = JSON.parse(localStorage.getItem(".description"))
 
+/*function renderTodos(list) {
+    $(".description")
+}
+
+// 
 
 // create a function to save info in textarea
 // when clicked on save button
-$("#saveBtn").on("click", function(event) {
+$("#saveBtn").on("click", function() {
     event.preventDefault();
 
-    // get value from description in timeslot
-    var toDoHour = $(".description")
-        .val();
+    var toDoTask = $(".description")
+    .val();
+
+    list.push(toDoTask);
+
+    renderTodos(list);
+
+    localStorage.setItem("todolist", JSON.stringify(list));
+})*/
+
+// another attmept 
+
+/*
+$(".description").val()
+
+$("saveBtn").click(function() {
+    var toDo = $(this); 
+    var storage = toDo.attr(".description"); 
+    toDo.fadeOut(); 
+    localStorage.setItem("local", storage); 
+  });
+
+  $(function() {  
+    var value = localStorage.getItem("local"); 
+    if (value) {  
+      $(".description" + value).fadeOut();  
+    }
+  }); */
+
   
-    list.push(toDoHour);
-
-    renderToDos(list);
-
-    localStorage.setItem(".description", JSON.stringify(list));
-
-    $(".description").val("");
-
-});
